@@ -31,4 +31,9 @@
 #endif
 #endif /* __MP_LEGACY_SUPPORT_PTHREAD_RWLOCK__  */
 
+#if __MP_LEGACY_SUPPORT_PTHREAD_THREADID_NP__
+/* needed on Leopard or less */
+int pthread_threadid_np(pthread_t, __uint64_t*);
+#endif
+
 #endif /* _MACPORTS_PTHREAD_H_ */

@@ -46,6 +46,8 @@ Wrapped headers are:
     <td><code>pthread.h</code></td>
     <td>Adds <code>PTHREAD_RWLOCK_INITIALIZER</code></td>
     <td>OSX10.4</td>
+    <td>Adds <code>pthread_threadid_np</code></td>
+    <td>OSX10.5</td>
   </tr>
   <tr>
     <td><code>stdio.h</code></td>

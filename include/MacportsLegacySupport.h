@@ -116,4 +116,7 @@
 /* STAILQ_FOREACH is not defined on Tiger*/
 #define __MP_LEGACY_SUPPORT_COSSIN__  (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 1090)
 
+/* pthread_threadid_np is not defined on Leopard or less */
+#define __MP_LEGACY_SUPPORT_PTHREAD_THREADID_NP__  (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 1060)
+
 #endif /* _MACPORTS_LEGACYSUPPORTDEFS_H_ */
