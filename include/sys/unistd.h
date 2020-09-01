@@ -55,6 +55,8 @@ __MP__BEGIN_DECLS
 
 extern int getattrlistat(int dirfd, const char *pathname, void *a,
 			 void *buf, size_t size, unsigned long flags);
+extern int setattrlistat(int dirfd, const char *pathname, void *a,
+			 void *buf, size_t size, unsigned long flags);
 extern ssize_t readlinkat(int dirfd, const char *pathname, char *buf, size_t bufsiz);
 extern int faccessat(int dirfd, const char *pathname, int mode, int flags);
 extern int fchownat(int dirfd, const char *pathname, uid_t owner, gid_t group, int flags);

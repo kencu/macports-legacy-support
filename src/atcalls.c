@@ -225,6 +225,20 @@ int getattrlistat(int dirfd, const char *pathname, void *a,
 #endif
 }
 
+int setattrlistat(int dirfd, const char *pathname, void *a,
+                  void *buf, size_t size, unsigned long flags)
+{
+#ifdef __LP64__
+    /* This is fricken stupid */
+    unsigned int _flags = (unsigned int)flags;
+    assert ((unsigned long)_flags == flags);
+
+    return ATCALL(dirfd, pathname, setattrlist(pathname, a, buf, size, _flags));
+#else
+    return ATCALL(dirfd, pathname, setattrlist(pathname, a, buf, size, flags));
+#endif
+}
+
 int linkat(int olddirfd, const char *oldpath, int newdirfd, const char *newpath, int flags)
 {
     ERR_ON(EINVAL, flags);
