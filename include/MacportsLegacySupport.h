@@ -37,18 +37,20 @@
 /* fsgetpath */
 #define __MP_LEGACY_SUPPORT_FSGETPATH__       (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101300)
 
+/* **setattrlistat */
+#define __MP_LEGACY_SUPPORT_SETATTRLISTAT__   (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101300)
+
+/* ** utimensat, futimens, UTIME_NOW, UTIME_OMIT */
+#define __MP_LEGACY_SUPPORT_UTIMENSAT__       (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101300)
+
 /* clock_gettime */
 #define __MP_LEGACY_SUPPORT_GETTIME__         (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101200)
 
 /* **at calls */
 #define __MP_LEGACY_SUPPORT_ATCALLS__         (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101000)
 
-/* **setattrlistat */
-#define __MP_LEGACY_SUPPORT_SETATTRLISTAT__   (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101300)
-
 /* fdopendir */
 #define __MP_LEGACY_SUPPORT_FDOPENDIR__       (__APPLE__ && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 101000)
-
 
 /* this header is automatically included by <net/if.h> on systems 10.9 and up.
    It is therefore expected to be included by most current software. */
