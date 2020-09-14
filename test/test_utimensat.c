@@ -10,10 +10,63 @@
 #include <string.h>
 #include <unistd.h>
 
+/*
 #include <darwintest.h>
 #include <darwintest_utils.h>
+*/
 
 #define FILENAME "utimensat"
+
+#define T_LOG(...) printf("Testing: ");printf(__VA_ARGS__);printf("\n")
+
+#define T_ASSERT_POSIX_ZERO(a,b)    \
+                                    \
+    if ((a) != 0) {                 \
+        printf("assert zero failed"); \
+        if (b != NULL) {              \
+            printf(b);          \
+        };                          \
+        return 1;                   \
+    }
+
+#define T_ASSERT_POSIX_SUCCESS(a,b) \
+                                    \
+    if ((a) < 0) {                  \
+        printf("assert success failed"); \
+        if (b != NULL) {              \
+            printf(b);          \
+        };                          \
+        return 1;                   \
+    }
+
+#define T_ASSERT_GE(a,b,c)    \
+                                    \
+    if (!(a >= b)) {                \
+        printf("assert GE failed {%ld, %ld} ", a, b); \
+        if (c != NULL) {              \
+            printf(c);          \
+        };                          \
+		printf("\n");				\
+        return 1;                   \
+    }
+
+#define T_ASSERT_EQ(a,b,c)    \
+                                    \
+    if (!(a == b)) {                \
+        printf("assert EQ failed {%ld, %ld} ", a, b); \
+        if (c != NULL) {              \
+            printf(c);          \
+        };                          \
+		printf("\n");				\
+        return 1;                   \
+    }
+
+#define T_DECL(a,b) int main(void)
+#define T_SETUPBEGIN
+#define T_SETUPEND
+#define T_SKIP
+#define T_QUIET
+#define dt_tmpdir tmpdir
 
 static const struct timespec tptr[][2] = {
 	{ { 0x12345678, 987654321 }, { 0x15263748, 123456789 }, },
@@ -33,14 +86,14 @@ static const struct timespec tptr[][2] = {
 T_DECL(utimensat, "Try various versions of utimensat")
 {
 	T_SETUPBEGIN;
-	T_ASSERT_POSIX_ZERO(chdir(dt_tmpdir()), NULL);
+/*	T_ASSERT_POSIX_ZERO(chdir(dt_tmpdir()), NULL);
 	// Skip the test if the current working directory is not on APFS.
 	struct statfs sfs = { 0 };
 	T_QUIET; T_ASSERT_POSIX_SUCCESS(statfs(".", &sfs), NULL);
 	if (memcmp(&sfs.f_fstypename[0], "apfs", strlen("apfs")) != 0) {
 		T_SKIP("utimensat is APFS-only, but working directory is non-APFS");
 	}
-	T_SETUPEND;
+*/	T_SETUPEND;
 
 	struct stat pre_st, post_st;
 	int fd;
